@@ -1,0 +1,286 @@
+:root {
+  --animation-time: 368ms;
+}
+
+.JC-nav {
+  width: 240px;
+  height: 100%;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  overflow: visible;
+
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+    height: 56px;
+    max-height: 100vh;
+
+    &.opened {
+    
+      .JC-nav__header {
+        &__menu-button {
+          .menu-button-line {
+            &.first{
+              animation: menu-open-first var(--animation-time) ease-in-out forwards;
+            }
+  
+            &.second{
+              animation: menu-open-second var(--animation-time) ease-in-out forwards;
+            }
+  
+            &.third{
+              animation: menu-open-thrid var(--animation-time) ease-in-out forwards;
+            }
+          }
+        }
+      }
+  
+      .JC-nav__body {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  }
+
+  &__header {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-self: flex-start;
+    height: auto;
+    padding: 16px 20px 0 20px;
+    flex: 0 0 auto;
+    background-color: #002b49;
+    z-index: 10;
+
+    @media only screen and (max-width: 768px) {
+      padding: 0 24px;
+      height: 56px;
+      justify-content: space-between;
+    }
+
+    &__menu-button {
+      width: 48px;
+      height: 48px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+      display: none;
+
+      @media only screen and (max-width: 768px) {
+        display: flex;
+      }
+
+      .menu-button-line {
+        width: 24px;
+        height: 2px;
+        background-color: white;
+        border-radius: 1px;
+        pointer-events: none;
+
+        &.first{
+          animation: menu-close-first var(--animation-time) ease-in-out forwards;
+        }
+
+        &.second{
+          animation: menu-close-second var(--animation-time) ease-in-out forwards;
+        }
+
+        &.third{
+          animation: menu-close-thrid var(--animation-time) ease-in-out forwards;
+        }
+      }
+
+      @keyframes menu-open-first {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(7px);
+        }
+        100% {
+          transform: translateY(7px) rotate(45deg);
+        }
+      }
+
+      @keyframes menu-open-second {
+        0% {
+          opacity: 1;
+        }
+        49% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+        100%  {
+          opacity: 0;
+        }
+      }
+
+      @keyframes menu-open-thrid {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-7px);
+        }
+        100% {
+          transform: translateY(-7px) rotate(-45deg);
+        }
+      }
+
+      @keyframes menu-close-first {
+        0% {
+          transform: translateY(7px) rotate(45deg);
+        }
+        50% {
+          transform: translateY(7px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes menu-close-second {
+        0% {
+          opacity: 0;
+        }
+        49% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        100%  {
+          opacity: 1;
+        }
+      }
+
+      @keyframes menu-close-thrid {
+        0% {
+          transform: translateY(-7px) rotate(-45deg);
+        }
+        50% {
+          transform: translateY(-7px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+
+  &__body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    min-height: 0;
+    flex: 1 1 auto;
+    background-color: #002b49;
+    z-index: 1;
+    opacity: 1;
+
+    @media only screen and (max-width: 768px) {
+      position: absolute;
+      transform: translateY(-100%);
+      opacity: 0;
+      transition: transform 368ms ease-in-out, opacity 368ms ease-in-out;
+    }
+
+    &__menu-box {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+      flex: 1 1 auto;
+      display: flex;
+      overflow: hidden;
+
+      &::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 16px;
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        left: 0;
+        background: linear-gradient(
+          180deg,
+          #002b49 0%,
+          rgba(0, 43, 73, 0) 100%
+        );
+      }
+
+      &::before {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 16px;
+        position: absolute;
+        z-index: 10;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(0deg, #002b49 0%, rgba(0, 43, 73, 0) 100%);
+      }
+
+      &__inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        overflow: auto;
+        padding: 16px 8px 24px 8px;
+        gap: 8px;
+
+        @media only screen and (max-width: 768px) {
+          padding: 16px 24px 24px 24px;
+        }
+      }
+    }
+
+    &__footer {
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 3px;
+      flex: 0 0 auto;
+      padding: 0 8px 16px 8px;
+
+      &__border {
+        display: block;
+        flex: 0 0 auto;
+        width: 100%;
+        height: 1px;
+        margin-bottom: 16px;
+        background: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.12) 12.5%,
+          rgba(255, 255, 255, 0.12) 86%,
+          rgba(153, 255, 255, 0) 100%
+        );
+      }
+    }
+  }
+}

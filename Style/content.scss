@@ -1,0 +1,109 @@
+.JC-content {
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  flex: 1 1 auto;
+  background-color: #f7f7fb;
+  display: flex;
+  flex-direction: column;
+
+  &__body {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    flex: 1 1 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    padding: 32px;
+    overflow: auto;
+  }
+
+  &__box {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0px 1px 2px 0px rgba(32, 45, 56, 0.12),
+      0px 0px 0px 1px rgba(227, 232, 233, 0.26);
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      width: 100px;
+      height: 12px;
+      background-color: rgba(32, 45, 56, 0.06);
+      border-radius: 4px;
+
+      @media only screen and (max-width: 768px) {
+        width: 50px;
+      }
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 18px;
+      right: 24px;
+      width: 24px;
+      height: 24px;
+      background-color: rgba(32, 45, 56, 0.04);
+      border-radius: 12px;
+    }
+  }
+
+  .JC-page-header {
+    width: 100%;
+    height: 56px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    background-color: white;
+    border-bottom: 1px solid #e3e8e9;
+    flex: 0 0 auto;
+
+    &__title {
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    &__right-box {
+      width: auto;
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 16px;
+
+      span {
+        display: block;
+        width: 100px;
+        height: 12px;
+        background-color: rgba(32, 45, 56, 0.1);
+        border-radius: 4px;
+
+        @media only screen and (max-width: 768px) {
+          display: none;
+        }
+      }
+
+      circle {
+        display: block;
+        width: 32px;
+        height: 32px;
+        background-color: rgba(32, 45, 56, 0.1);
+        border-radius: 20px;
+        margin-left: 8px;
+      }
+    }
+  }
+}
